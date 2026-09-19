@@ -1,21 +1,29 @@
+// Dependencies
 #include <raylib.h>
-#include <iostream>
 
+// Own includes
 #include "Ball.hpp"
 #include "Paddle.hpp"
 #include "CollisionHandler.hpp"
 
+/**
+ * MAIN
+ */
 int main()
 {
 
 
 
-    // WINDOW INITIALIZATIONS
+    /**
+     * WINDOW INITIALIZATIONS
+     */
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pong++");
     SetTargetFPS(60);
     float deltaTime{};
 
-    // TESTING STUFF
+    /**
+     * TESTING DECLARATIONS
+     */
     const int PADDLE_WIDTH{20};
     const int PADDLE_HEIGHT{300};
 
@@ -26,25 +34,37 @@ int main()
 
 
     CollisionHandler collisioner(&paddle1, &paddle2, &ball);
-    // END TESTING
+    /**
+     * END TESTING
+     */
 
-    // MAIN GAME LOOP
+    /**
+     * MAIN GAME LOOP
+     */
     while (!WindowShouldClose())
     {
-        // PROCESS
-        float deltaTime = GetFrameTime();
+        /**
+         * PROCESS
+         */
+        deltaTime = GetFrameTime();
 
         collisioner.Update(deltaTime);
 
-        // DRAWING
+        /**
+         * DRAWING
+         */
         BeginDrawing();
         ClearBackground(BLACK);
 
         DrawLine(WINDOW_WIDTH / 2, 0, WINDOW_WIDTH / 2, WINDOW_HEIGHT, WHITE);
 
-        // TESTING STUFF
+        /**
+         * TESTING STUFF
+         */
         collisioner.Draw();
-        // END TESTING
+        /**
+         * END TESTING
+         */
 
         EndDrawing();
     }

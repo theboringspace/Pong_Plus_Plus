@@ -7,10 +7,10 @@ Ball::Ball(Vector2 c, float r)
 
 void Ball::Update(float deltaTime)
 {
-    // INITIALIZATION
+    // Initializations
     bool hasHitWall{};
 
-    // REGULAR MOVEMENT
+    // Regular Movement Update
     center.x += velocity.x;
     center.y += velocity.y;
 
@@ -28,7 +28,7 @@ void Ball::Update(float deltaTime)
         if (tempBall.velocity.y > 0 && tempBall.center.y + radius > WINDOW_HEIGHT)
         {
             tempBall.velocity = Vector2{tempBall.velocity.x, tempBall.velocity.y * -1};
-            
+
             center = Vector2{center.x, WINDOW_HEIGHT - radius};
         }
         // Top bound
@@ -59,15 +59,13 @@ void Ball::Update(float deltaTime)
     }
 }
 
+void Ball::Draw()
+{
+    DrawCircle(center.x, center.y, radius, WHITE);
+}
 
 void Ball::AddToPosition(const Vector2& velocity_)
 {
     center.x += velocity_.x;
     center.y += velocity_.y;
 }
-
-void Ball::Draw()
-{
-    DrawCircle(center.x, center.y, radius, WHITE);
-}
-

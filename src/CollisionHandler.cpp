@@ -8,18 +8,16 @@ CollisionHandler::CollisionHandler(Paddle* paddle1, Paddle* paddle2, Ball* ball_
     paddles.at(1) = paddle2;
 }
 
-
-
 void CollisionHandler::Update(float deltaTime)
 {
     for (size_t index{0}; index < paddles.size(); ++index)
     {
-        bool colliding = CheckCollisionCircleRec(ball->center, ball->radius, 
-                        Rectangle{  paddles.at(index)->GetPosition().x, 
+        bool colliding = CheckCollisionCircleRec(ball->center, ball->radius,
+                        Rectangle{  paddles.at(index)->GetPosition().x,
                                     paddles.at(index)->GetPosition().y,
-                                    paddles.at(index)->GetDimensions().x, 
+                                    paddles.at(index)->GetDimensions().x,
                                     paddles.at(index)->GetDimensions().y,
-                                    }); 
+                                    });
 
         ball->Update(deltaTime);
         paddles.at(0)->Update();
@@ -27,19 +25,19 @@ void CollisionHandler::Update(float deltaTime)
 
 
         if (colliding)
-        {   
+        {
             Ball temp{*ball};
 
             ball->velocity = Vector2{0, 0};
 
             // Right bound
-            if (temp.velocity.x < 0 && 
+            if (temp.velocity.x < 0 &&
                 paddles.at(index)->GetPosition().x - paddles.at(index)->GetDimensions().x < temp.center.x - temp.radius)
             {
                 temp.velocity.x *= -1;
             }
             // Left bound
-            else if (temp.velocity.x > 0 && 
+            else if (temp.velocity.x > 0 &&
                 paddles.at(index)->GetPosition().x + paddles.at(index)->GetDimensions().x > temp.center.x + temp.radius)
             {
                 temp.velocity.x *= -1;
@@ -56,4 +54,3 @@ void CollisionHandler::Draw()
     paddles.at(0)->Draw();
     paddles.at(1)->Draw();
 }
-
