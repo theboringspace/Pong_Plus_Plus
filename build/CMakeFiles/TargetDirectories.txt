@@ -1,0 +1,3 @@
+/home/theboringspace/Desktop/PongPlusPlus/build/CMakeFiles/PingPlusPlus.dir
+/home/theboringspace/Desktop/PongPlusPlus/build/CMakeFiles/edit_cache.dir
+/home/theboringspace/Desktop/PongPlusPlus/build/CMakeFiles/rebuild_cache.dir

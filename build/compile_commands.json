@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/theboringspace/Desktop/PongPlusPlus/build",
+  "command": "/usr/bin/g++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/theboringspace/Desktop/PongPlusPlus/include -g -std=gnu++20 -o CMakeFiles/PingPlusPlus.dir/src/main.cpp.o -c /home/theboringspace/Desktop/PongPlusPlus/src/main.cpp",
+  "file": "/home/theboringspace/Desktop/PongPlusPlus/src/main.cpp",
+  "output": "CMakeFiles/PingPlusPlus.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/theboringspace/Desktop/PongPlusPlus/build",
+  "command": "/usr/bin/g++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/theboringspace/Desktop/PongPlusPlus/include -g -std=gnu++20 -o CMakeFiles/PingPlusPlus.dir/src/Ball.cpp.o -c /home/theboringspace/Desktop/PongPlusPlus/src/Ball.cpp",
+  "file": "/home/theboringspace/Desktop/PongPlusPlus/src/Ball.cpp",
+  "output": "CMakeFiles/PingPlusPlus.dir/src/Ball.cpp.o"
+},
+{
+  "directory": "/home/theboringspace/Desktop/PongPlusPlus/build",
+  "command": "/usr/bin/g++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/theboringspace/Desktop/PongPlusPlus/include -g -std=gnu++20 -o CMakeFiles/PingPlusPlus.dir/src/Paddle.cpp.o -c /home/theboringspace/Desktop/PongPlusPlus/src/Paddle.cpp",
+  "file": "/home/theboringspace/Desktop/PongPlusPlus/src/Paddle.cpp",
+  "output": "CMakeFiles/PingPlusPlus.dir/src/Paddle.cpp.o"
+},
+{
+  "directory": "/home/theboringspace/Desktop/PongPlusPlus/build",
+  "command": "/usr/bin/g++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/theboringspace/Desktop/PongPlusPlus/include -g -std=gnu++20 -o CMakeFiles/PingPlusPlus.dir/src/CollisionHandler.cpp.o -c /home/theboringspace/Desktop/PongPlusPlus/src/CollisionHandler.cpp",
+  "file": "/home/theboringspace/Desktop/PongPlusPlus/src/CollisionHandler.cpp",
+  "output": "CMakeFiles/PingPlusPlus.dir/src/CollisionHandler.cpp.o"
+}
+]
