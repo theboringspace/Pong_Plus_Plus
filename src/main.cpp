@@ -1,5 +1,4 @@
 #include <raylib.h>
-#include <iostream>
 
 #include "Ball.hpp"
 #include "Paddle.hpp"
