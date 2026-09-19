@@ -11,9 +11,6 @@
  */
 int main()
 {
-
-
-
     /**
      * WINDOW INITIALIZATIONS
      */
@@ -29,8 +26,10 @@ int main()
 
 
     Ball ball(Vector2{WINDOW_WIDTH / 2.0, WINDOW_HEIGHT / 2.0}, 25);
-    Paddle paddle1(Vector2{WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT});
-    Paddle paddle2(Vector2{WINDOW_WIDTH - WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT});
+    Paddle paddle1(Vector2{WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT},
+        KEY_W, KEY_S);
+    Paddle paddle2(Vector2{WINDOW_WIDTH - WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT},
+        KEY_UP, KEY_DOWN);
 
 
     CollisionHandler collisioner(&paddle1, &paddle2, &ball);

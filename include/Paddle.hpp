@@ -16,13 +16,15 @@ private:
     Vector2 position;
     Vector2 dimensions;
 
+    KeyboardKey upKey;
+    KeyboardKey downKey;
 public:
     /**
      * CONSTRUCTOR Paddle
      * --
      * Takes in x,y position and width, height dimensions.
      */
-    Paddle(Vector2 position_, Vector2 dimensions_);
+    Paddle(Vector2 position_, Vector2 dimensions_, KeyboardKey up, KeyboardKey down);
 
     /**
      * FUNCTION GetPosition
