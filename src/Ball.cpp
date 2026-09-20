@@ -11,8 +11,8 @@ void Ball::Update(float deltaTime)
     bool hasHitWall{};
 
     // Regular Movement Update
-    center.x += velocity.x;
-    center.y += velocity.y;
+    center.x += velocity.x * deltaTime;
+    center.y += velocity.y * deltaTime;
 
     hasHitWall =    (velocity.y > 0 && center.y + radius > WINDOW_HEIGHT)   ||
                     (velocity.y < 0 && center.y - radius < 0)               ||

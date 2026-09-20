@@ -13,6 +13,8 @@ private:
     /**
      * MEMBERS
      */
+    static constexpr float PADDLE_SPEED{500.0f};
+
     Vector2 position;
     Vector2 dimensions;
 
@@ -45,7 +47,7 @@ public:
      * --
      * Updates paddle members depending on events.
      */
-    void Update();
+    void Update(float deltaTime);
 
     /**
      * FUNCTION Draw

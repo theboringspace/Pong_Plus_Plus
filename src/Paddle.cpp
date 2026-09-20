@@ -17,16 +17,16 @@ Vector2 Paddle::GetDimensions()const
 }
 
 
-void Paddle::Update()
+void Paddle::Update(float deltaTime)
 {
     // INPUT HANDLING
     if (IsKeyDown(upKey) && position.y >= 0)
     {
-        position.y -= 15.0f;
+        position.y -= PADDLE_SPEED * deltaTime;
     }
     if (IsKeyDown(downKey) && position.y <= WINDOW_HEIGHT - dimensions.y)
     {
-        position.y += 15.0f;
+        position.y += PADDLE_SPEED * deltaTime;
     }
 }
 

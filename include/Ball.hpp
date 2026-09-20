@@ -13,10 +13,12 @@ struct Ball
     /**
      * MEMBERS
      */
+    static constexpr float BALL_SPEED{500.0f};
+
     Vector2 center;
     float   radius;
 
-    Vector2 velocity{ Vector2{15, 15} };
+    Vector2 velocity{ Vector2{BALL_SPEED, BALL_SPEED} };
 
 
     /**

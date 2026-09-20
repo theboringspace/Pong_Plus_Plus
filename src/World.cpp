@@ -9,9 +9,9 @@ World::World(Paddle* leftPaddle, Paddle* rightPaddle, Ball* ball_)
 
 void World::Update(float deltaTime)
 {
-    collisioner.Update(deltaTime);
-    paddles.at(0)->Update();
-    paddles.at(1)->Update();
+    collisioner.ResolveCollision();
+    paddles.at(0)->Update(deltaTime);
+    paddles.at(1)->Update(deltaTime);
     ball->Update(deltaTime);
 }
 

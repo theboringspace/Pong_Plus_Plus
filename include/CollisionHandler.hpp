@@ -35,11 +35,11 @@ public:
     CollisionHandler(std::array<Paddle*, 2>* paddles_, Ball* ball);
 
     /**
-     * FUNCTION Update
+     * FUNCTION ResolveCollision
      * --
-     * Updates collision events.
+     * Resolves collision events.
      */
-    void Update(float deltaTime);
+    void ResolveCollision();
 
     /**
      * FUNCTION Draw

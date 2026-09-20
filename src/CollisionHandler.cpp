@@ -6,7 +6,7 @@ CollisionHandler::CollisionHandler(std::array<Paddle*, 2>* paddles_, Ball* ball_
 {
 }
 
-void CollisionHandler::Update(float deltaTime)
+void CollisionHandler::ResolveCollision()
 {
     for (size_t index{0}; index < paddles->size(); ++index)
     {
