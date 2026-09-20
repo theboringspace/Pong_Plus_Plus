@@ -1,3 +1,5 @@
+#pragma once
+
 #include <raylib.h>
 #include <array>
 
@@ -18,7 +20,7 @@ private:
     /**
      * MEMBERS
      */
-    std::array<Paddle*, 2> paddles;
+    std::array<Paddle*, 2>* paddles;
     Ball* ball;
 public:
     /**
@@ -30,7 +32,7 @@ public:
      * --
      * A collision handler handles 2 paddles' and 1 ball's collision events.
      */
-    CollisionHandler(Paddle* paddle1, Paddle* paddle2, Ball* ball);
+    CollisionHandler(std::array<Paddle*, 2>* paddles_, Ball* ball);
 
     /**
      * FUNCTION Update

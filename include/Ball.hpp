@@ -16,7 +16,7 @@ struct Ball
     Vector2 center;
     float   radius;
 
-    Vector2 velocity{ Vector2{-5, -5} };
+    Vector2 velocity{ Vector2{15, 15} };
 
 
     /**

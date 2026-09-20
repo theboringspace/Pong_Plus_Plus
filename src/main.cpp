@@ -4,7 +4,7 @@
 // Own includes
 #include "Ball.hpp"
 #include "Paddle.hpp"
-#include "CollisionHandler.hpp"
+#include "World.hpp"
 
 /**
  * MAIN
@@ -26,13 +26,15 @@ int main()
 
 
     Ball ball(Vector2{WINDOW_WIDTH / 2.0, WINDOW_HEIGHT / 2.0}, 25);
+
     Paddle paddle1(Vector2{WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT},
         KEY_W, KEY_S);
+
     Paddle paddle2(Vector2{WINDOW_WIDTH - WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT},
         KEY_UP, KEY_DOWN);
 
 
-    CollisionHandler collisioner(&paddle1, &paddle2, &ball);
+    World world(&paddle1, &paddle2, &ball);
     /**
      * END TESTING
      */
@@ -47,7 +49,7 @@ int main()
          */
         deltaTime = GetFrameTime();
 
-        collisioner.Update(deltaTime);
+        world.Update(deltaTime);
 
         /**
          * DRAWING
@@ -60,7 +62,7 @@ int main()
         /**
          * TESTING STUFF
          */
-        collisioner.Draw();
+        world.Draw();
         /**
          * END TESTING
          */

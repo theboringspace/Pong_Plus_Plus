@@ -22,11 +22,11 @@ void Paddle::Update()
     // INPUT HANDLING
     if (IsKeyDown(upKey) && position.y >= 0)
     {
-        position.y -= 5.0f;
+        position.y -= 15.0f;
     }
     if (IsKeyDown(downKey) && position.y <= WINDOW_HEIGHT - dimensions.y)
     {
-        position.y += 5.0f;
+        position.y += 15.0f;
     }
 }
 
