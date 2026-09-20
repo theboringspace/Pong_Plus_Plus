@@ -1,7 +1,6 @@
 #pragma once
 
 #include <raylib.h>
-#include "Constants.hpp"
 
 /**
  * STRUCT Ball
@@ -13,7 +12,7 @@ struct Ball
     /**
      * MEMBERS
      */
-    static constexpr float BALL_SPEED{500.0f};
+    static constexpr float BALL_SPEED{750.0f};
 
     Vector2 center;
     float   radius;

@@ -5,6 +5,7 @@
 #include "Ball.hpp"
 #include "Paddle.hpp"
 #include "World.hpp"
+#include "Constants.hpp"
 
 /**
  * MAIN

@@ -19,24 +19,29 @@ void CollisionHandler::ResolveCollision()
 
         if (colliding)
         {
-            Ball temp{*ball};
-
-            ball->velocity = Vector2{0, 0};
-
             // Right bound
-            if (temp.velocity.x < 0 &&
-                paddles->at(index)->GetPosition().x - paddles->at(index)->GetDimensions().x < temp.center.x - temp.radius)
+            if (ball->velocity.x < 0 &&
+                paddles->at(index)->GetPosition().x - paddles->at(index)->GetDimensions().x < ball->center.x - ball->radius)
             {
-                temp.velocity.x *= -1;
+                ball->velocity.x *= -1;
             }
             // Left bound
-            else if (temp.velocity.x > 0 &&
-                paddles->at(index)->GetPosition().x + paddles->at(index)->GetDimensions().x > temp.center.x + temp.radius)
+            else if (ball->velocity.x > 0 &&
+                paddles->at(index)->GetPosition().x + paddles->at(index)->GetDimensions().x > ball->center.x + ball->radius)
             {
-                temp.velocity.x *= -1;
+                ball->velocity.x *= -1;
             }
-
-            ball->velocity = temp.velocity;
+            // Top bound
+            else if (ball->velocity.y < 0 &&
+                paddles->at(index)->GetPosition().y < ball->center.y + ball->radius)
+            {
+                ball->velocity.y *= -1;
+            }
+            // Bottom bound
+            else
+            {
+                ball->velocity.y *= -1;
+            }
         }
     }
 }
