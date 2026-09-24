@@ -14,9 +14,11 @@ private:
      * MEMBERS
      */
     static constexpr float PADDLE_SPEED{500.0f};
+    static constexpr float PADDLE_HEIGHT{350};
+    static constexpr float PADDLE_WIDTH{15};
 
     Vector2 position;
-    Vector2 dimensions;
+    Vector2 dimensions{PADDLE_WIDTH, PADDLE_HEIGHT};
 
     KeyboardKey upKey;
     KeyboardKey downKey;
@@ -26,7 +28,7 @@ public:
      * --
      * Takes in x,y position and width, height dimensions.
      */
-    Paddle(Vector2 position_, Vector2 dimensions_, KeyboardKey up, KeyboardKey down);
+    Paddle(Vector2 position_, KeyboardKey up, KeyboardKey down);
 
     /**
      * FUNCTION GetPosition

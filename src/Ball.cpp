@@ -1,8 +1,8 @@
 #include "Ball.hpp"
 #include "Constants.hpp"
 
-Ball::Ball(Vector2 c, float r)
-:   center(c), radius(r)
+Ball::Ball(Vector2 c)
+:   center(c)
 {
 }
 

@@ -5,20 +5,21 @@
 #include <array>
 
 #include "Ball.hpp"
+#include "Constants.hpp"
 #include "Paddle.hpp"
-#include "CollisionHandler.hpp"
 
 class World
 {
 private:
-    std::array<Paddle*, 2> paddles;
-    Ball* ball;
-    CollisionHandler collisioner;
+
+    Ball ball;
+    std::array<Paddle, MAX_PADDLES> paddles;
 
 public:
-    World(Paddle* leftPaddle, Paddle* rightPaddle, Ball* ball_);
+    enum { LEFT, RIGHT };
 
+    World();
     void Update(float deltaTime);
-
     void Draw();
+
 };

@@ -15,7 +15,7 @@ struct Ball
     static constexpr float BALL_SPEED{750.0f};
 
     Vector2 center;
-    float   radius;
+    float   radius{30};
 
     Vector2 velocity{ Vector2{BALL_SPEED, BALL_SPEED} };
 
@@ -25,7 +25,7 @@ struct Ball
      */
 
     // Constructor
-    Ball(Vector2 c, float r);
+    Ball(Vector2 c);
 
     // Object Update Function
     void Update(float deltaTime);

@@ -1,23 +1,26 @@
 #include "World.hpp"
+#include "CollisionHandler.hpp"
+#include "Constants.hpp"
 
-World::World(Paddle* leftPaddle, Paddle* rightPaddle, Ball* ball_)
-:   ball(ball_), collisioner(&paddles, ball_)
+World::World()
+:   ball{ Vector2{WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f } },
+    paddles{ Paddle{ Vector2{WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, KEY_W, KEY_S },
+             Paddle{ Vector2{WINDOW_WIDTH - WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, KEY_UP, KEY_DOWN } }
 {
-    paddles.at(0) = leftPaddle;
-    paddles.at(1) = rightPaddle;
 }
 
 void World::Update(float deltaTime)
 {
-    collisioner.ResolveCollision();
-    paddles.at(0)->Update(deltaTime);
-    paddles.at(1)->Update(deltaTime);
-    ball->Update(deltaTime);
+    for (Paddle& paddle : paddles)
+        { paddle.Update(deltaTime); }
+
+    ball.Update(deltaTime);
+    CollisionHandler::ResolveCollision(ball, paddles);
 }
 
 void World::Draw()
 {
-    paddles.at(0)->Draw();
-    paddles.at(1)->Draw();
-    ball->Draw();
+    paddles[LEFT].Draw();
+    paddles[RIGHT].Draw();
+    ball.Draw();
 }

@@ -3,8 +3,8 @@
 
 #include <algorithm>
 
-Paddle::Paddle(Vector2 position_, Vector2 dimensions_, KeyboardKey up, KeyboardKey down)
-:   position(position_), dimensions(dimensions_), upKey(up), downKey(down)
+Paddle::Paddle(Vector2 position_, KeyboardKey up, KeyboardKey down)
+:   position(position_), upKey(up), downKey(down)
 {
 }
 
