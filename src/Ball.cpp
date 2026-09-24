@@ -8,50 +8,21 @@ Ball::Ball(Vector2 c)
 
 void Ball::Update(float deltaTime)
 {
-    // Initializations
-    bool hasHitWall{};
-
     // Regular Movement Update
     center.x += velocity.x * deltaTime;
     center.y += velocity.y * deltaTime;
 
-    hasHitWall =    (velocity.y > 0 && center.y + radius > WINDOW_HEIGHT)   ||
-                    (velocity.y < 0 && center.y - radius < 0)               ||
-                    (velocity.x > 0 && center.x + radius > WINDOW_WIDTH)    ||
-                    (velocity.x < 0 && center.x - radius < 0);
-
-    if (hasHitWall)
+    // Bottom bound
+    if (velocity.y > 0 && center.y + radius > WINDOW_HEIGHT)
     {
-        // Bottom bound
-        if (velocity.y > 0 && center.y + radius > WINDOW_HEIGHT)
-        {
-            velocity = Vector2{velocity.x, velocity.y * -1};
 
-            center = Vector2{center.x, WINDOW_HEIGHT - radius};
-        }
-        // Top bound
-        else if (velocity.y < 0 && center.y - radius < 0)
-        {
-            velocity = Vector2{velocity.x, velocity.y * -1};
+        velocity.y = -std::abs(velocity.y);
+    }
+    // Top bound
+    else if (velocity.y < 0 && center.y - radius < 0)
+    {
+        velocity.y = std::abs(velocity.y);
 
-            center = Vector2{center.x, radius};
-        }
-        // Right bound
-        else if (velocity.x > 0 && center.x + radius > WINDOW_WIDTH)
-        {
-            velocity = Vector2{velocity.x * -1, velocity.y};
-
-            center = Vector2{WINDOW_WIDTH - radius, center.y};
-        }
-        // Left bound
-        else if (velocity.x < 0 && center.x - radius < 0)
-        {
-            velocity = Vector2{velocity.x * -1, velocity.y};
-
-            center = Vector2{radius, center.y};
-        }
-
-        hasHitWall = false;
     }
 }
 

@@ -8,4 +8,4 @@ inline constexpr int WINDOW_HEIGHT{1080};
 // GLOBAL GAME CONSTANTS
 inline constexpr size_t PADDLE_COUNT{2};
 // for better indication with Paddles
-enum { LEFT, RIGHT };
+enum Side : size_t {LEFT, RIGHT};

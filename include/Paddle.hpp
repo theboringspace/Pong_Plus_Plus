@@ -14,8 +14,8 @@ private:
      * MEMBERS
      */
     static constexpr float PADDLE_SPEED{500.0f};
-    static constexpr float PADDLE_HEIGHT{350};
-    static constexpr float PADDLE_WIDTH{15};
+    static constexpr float PADDLE_HEIGHT{200};
+    static constexpr float PADDLE_WIDTH{25};
 
     Vector2 position;
     Vector2 dimensions{PADDLE_WIDTH, PADDLE_HEIGHT};

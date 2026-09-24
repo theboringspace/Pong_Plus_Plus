@@ -22,9 +22,10 @@ private:
     Ball ball;
     std::array<Paddle, PADDLE_COUNT> paddles;
 
+    int leftScore{0};
+    int rightScore{0};
+
 public:
-
-
     /**
      * CONSTRUCTOR World
      * --
@@ -38,4 +39,5 @@ public:
     // Draw the whole world
     void Draw()const;
 
+    void Score();
 };
