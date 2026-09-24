@@ -20,11 +20,10 @@ private:
      * MEMBERS
      */
     Ball ball;
-    std::array<Paddle, MAX_PADDLES> paddles;
+    std::array<Paddle, PADDLE_COUNT> paddles;
 
 public:
-    // for better indication with Paddles
-    enum { LEFT, RIGHT };
+
 
     /**
      * CONSTRUCTOR World

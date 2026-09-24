@@ -2,10 +2,10 @@
 #include <cstdlib>
 
 // WINDOW SIZE CONSTANTS
-static constexpr int WINDOW_WIDTH{1920};
-static constexpr int WINDOW_HEIGHT{1080};
+inline constexpr int WINDOW_WIDTH{1920};
+inline constexpr int WINDOW_HEIGHT{1080};
 
 // GLOBAL GAME CONSTANTS
-static constexpr size_t MAX_PADDLES{2};
+inline constexpr size_t PADDLE_COUNT{2};
 // for better indication with Paddles
 enum { LEFT, RIGHT };

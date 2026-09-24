@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 
-void CollisionHandler::ResolveCollisions(Ball& ball, const std::array<Paddle, MAX_PADDLES>& paddles)
+void CollisionHandler::ResolveCollisions(Ball& ball, const std::array<Paddle, PADDLE_COUNT>& paddles)
 {
     Rectangle currentPaddleRect{};
 
