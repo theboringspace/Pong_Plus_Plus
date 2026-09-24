@@ -7,3 +7,5 @@ static constexpr int WINDOW_HEIGHT{1080};
 
 // GLOBAL GAME CONSTANTS
 static constexpr size_t MAX_PADDLES{2};
+// for better indication with Paddles
+enum { LEFT, RIGHT };
