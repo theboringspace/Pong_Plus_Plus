@@ -37,6 +37,6 @@ public:
     // Update the whole world
     void Update(float deltaTime);
     // Draw the whole world
-    void Draw();
+    void Draw()const;
 
 };

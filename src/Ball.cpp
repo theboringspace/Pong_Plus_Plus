@@ -55,7 +55,7 @@ void Ball::Update(float deltaTime)
     }
 }
 
-void Ball::Draw()
+void Ball::Draw()const
 {
     DrawCircle(center.x, center.y, radius, WHITE);
 }

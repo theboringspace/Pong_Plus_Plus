@@ -33,7 +33,7 @@ void Paddle::Update(float deltaTime)
 }
 
 
-void Paddle::Draw()
+void Paddle::Draw()const
 {
     DrawRectangle(position.x, position.y, dimensions.x, dimensions.y, WHITE);
 }

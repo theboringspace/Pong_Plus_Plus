@@ -56,5 +56,5 @@ public:
      * --
      * Draws the paddle on-screen.
      */
-    void Draw();
+    void Draw()const;
 };

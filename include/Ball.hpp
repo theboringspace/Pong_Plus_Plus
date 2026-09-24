@@ -31,5 +31,5 @@ struct Ball
     void Update(float deltaTime);
 
     // Object Main Function
-    void Draw();
+    void Draw()const;
 };
