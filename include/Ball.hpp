@@ -32,7 +32,4 @@ struct Ball
 
     // Object Main Function
     void Draw();
-
-    // Helper Function
-    void AddToPosition(const Vector2& velocity_);
 };

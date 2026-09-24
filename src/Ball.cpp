@@ -59,9 +59,3 @@ void Ball::Draw()
 {
     DrawCircle(center.x, center.y, radius, WHITE);
 }
-
-void Ball::AddToPosition(const Vector2& velocity_)
-{
-    center.x += velocity_.x;
-    center.y += velocity_.y;
-}
