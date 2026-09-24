@@ -10,37 +10,35 @@ void CollisionHandler::ResolveCollision()
 {
     for (size_t index{0}; index < paddles->size(); ++index)
     {
-        bool colliding = CheckCollisionCircleRec(ball->center, ball->radius,
-                        Rectangle{  paddles->at(index)->GetPosition().x,
-                                    paddles->at(index)->GetPosition().y,
-                                    paddles->at(index)->GetDimensions().x,
-                                    paddles->at(index)->GetDimensions().y,
-                                    });
+        bool colliding = CheckCollisionCircleRec(
+                            ball->center, ball->radius,
+                            Rectangle{  paddles->at(index)->GetPosition().x,
+                                        paddles->at(index)->GetPosition().y,
+                                        paddles->at(index)->GetDimensions().x,
+                                        paddles->at(index)->GetDimensions().y,
+                                                });
 
         if (colliding)
         {
             // Right bound
-            if (ball->velocity.x < 0 &&
-                paddles->at(index)->GetPosition().x - paddles->at(index)->GetDimensions().x < ball->center.x - ball->radius)
+            if (ball->velocity.x < 0 && paddles->at(index)->GetPosition().x - paddles->at(index)->GetDimensions().x < ball->center.x - ball->radius)
             {
-                ball->velocity.x *= -1;
+                ball->velocity.x = std::abs(ball->velocity.x);
             }
             // Left bound
-            else if (ball->velocity.x > 0 &&
-                paddles->at(index)->GetPosition().x + paddles->at(index)->GetDimensions().x > ball->center.x + ball->radius)
+            else if (ball->velocity.x > 0 && paddles->at(index)->GetPosition().x + paddles->at(index)->GetDimensions().x > ball->center.x + ball->radius)
             {
-                ball->velocity.x *= -1;
+                ball->velocity.x = -std::abs(ball->velocity.x);
             }
             // Top bound
-            else if (ball->velocity.y < 0 &&
-                paddles->at(index)->GetPosition().y < ball->center.y + ball->radius)
+            else if (ball->velocity.y < 0 && paddles->at(index)->GetPosition().y < ball->center.y + ball->radius)
             {
-                ball->velocity.y *= -1;
+                ball->velocity.y = -std::abs(ball->velocity.y);
             }
             // Bottom bound
             else
             {
-                ball->velocity.y *= -1;
+                ball->velocity.y = std::abs(ball->velocity.y);
             }
         }
     }
