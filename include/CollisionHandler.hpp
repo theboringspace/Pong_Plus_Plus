@@ -16,4 +16,4 @@
 namespace CollisionHandler
 {
     void ResolveCollisions(Ball& ball, const std::array<Paddle, PADDLE_COUNT>& paddles);
-};
+}

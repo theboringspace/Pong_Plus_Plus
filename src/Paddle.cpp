@@ -32,8 +32,16 @@ void Paddle::Update(float deltaTime)
     }
 }
 
-
 void Paddle::Draw()const
 {
     DrawRectangle(position.x, position.y, dimensions.x, dimensions.y, WHITE);
+}
+
+float Paddle::GetPaddleHeight()
+{
+    return PADDLE_HEIGHT;
+}
+float Paddle::GetPaddleWidth()
+{
+    return PADDLE_WIDTH;
 }

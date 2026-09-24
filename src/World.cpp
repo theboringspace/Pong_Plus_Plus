@@ -3,9 +3,9 @@
 #include "Constants.hpp"
 
 World::World()
-:   ball{ Vector2{WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f } },
-    paddles{ Paddle{ Vector2{WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, KEY_W, KEY_S },
-             Paddle{ Vector2{WINDOW_WIDTH - WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, KEY_UP, KEY_DOWN } }
+:   ball{ Vector2{ WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f } },
+    paddles{ Paddle{ Vector2{ WINDOW_WIDTH / 8.0f, (WINDOW_HEIGHT - Paddle::GetPaddleHeight()) / 2.0f }, KEY_W, KEY_S } ,
+             Paddle{ Vector2{ WINDOW_WIDTH - WINDOW_WIDTH / 8.0f, (WINDOW_HEIGHT - Paddle::GetPaddleHeight()) / 2.0f }, KEY_UP, KEY_DOWN } }
 {
 }
 

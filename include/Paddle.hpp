@@ -57,4 +57,12 @@ public:
      * Draws the paddle on-screen.
      */
     void Draw()const;
+
+    /**
+     * FUNCTIONS GetPaddleHeight & GetPaddleWidth
+     * --
+     * Getters for paddle dimensions
+     */
+    static float GetPaddleHeight();
+    static float GetPaddleWidth();
 };
