@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 
-void CollisionHandler::ResolveCollision(Ball& ball, std::array<Paddle, MAX_PADDLES>& paddles)
+void CollisionHandler::ResolveCollisions(Ball& ball, std::array<Paddle, MAX_PADDLES>& paddles)
 {
     for (size_t index{0}; index < paddles.size(); ++index)
     {

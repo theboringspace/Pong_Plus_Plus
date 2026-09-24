@@ -8,18 +8,12 @@
 #include "Ball.hpp"
 
 /**
- * CLASS CollisionHandler
+ * NAMESPACE CollisionHandler
  * --
  * Handles collisions STRICTLY between a paddle and a ball in a game of Pong.
  *
  */
-class CollisionHandler
+namespace CollisionHandler
 {
-public:
-    /**
-     * FUNCTION ResolveCollision
-     * --
-     * Resolves collision events.
-     */
-    static void ResolveCollision(Ball& ball, std::array<Paddle, MAX_PADDLES>& paddles);
+    void ResolveCollisions(Ball& ball, std::array<Paddle, MAX_PADDLES>& paddles);
 };
