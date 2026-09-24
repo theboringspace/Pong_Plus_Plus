@@ -18,3 +18,4 @@ target_include_directories(PingPlusPlus PRIVATE
   include)
 
 target_link_libraries(PingPlusPlus PRIVATE raylib)
+target_compile_options(PingPlusPlus PRIVATE -Wall -Wextra)
