@@ -24,21 +24,13 @@ void CollisionHandler::ResolveCollision()
             if (ball->velocity.x < 0 && paddles->at(index)->GetPosition().x - paddles->at(index)->GetDimensions().x < ball->center.x - ball->radius)
             {
                 ball->velocity.x = std::abs(ball->velocity.x);
+                ball->center.x   = paddles->at(index)->GetPosition().x + paddles->at(index)->GetDimensions().x + ball->radius;
             }
             // Left bound
             else if (ball->velocity.x > 0 && paddles->at(index)->GetPosition().x + paddles->at(index)->GetDimensions().x > ball->center.x + ball->radius)
             {
                 ball->velocity.x = -std::abs(ball->velocity.x);
-            }
-            // Top bound
-            else if (ball->velocity.y < 0 && paddles->at(index)->GetPosition().y < ball->center.y + ball->radius)
-            {
-                ball->velocity.y = -std::abs(ball->velocity.y);
-            }
-            // Bottom bound
-            else
-            {
-                ball->velocity.y = std::abs(ball->velocity.y);
+                ball->center.x   = paddles->at(index)->GetPosition().x - ball->radius;
             }
         }
     }
