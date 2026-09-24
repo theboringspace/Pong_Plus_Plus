@@ -12,6 +12,11 @@ void CollisionHandler::ResolveCollisions(Ball& ball, const std::array<Paddle, PA
         currentPaddleRect = Rectangle{ currentPaddle.GetPosition().x, currentPaddle.GetPosition().y,
                                        currentPaddle.GetDimensions().x, currentPaddle.GetDimensions().y, };
 
+        // Left paddle: only bounce if the ball's center is still in front of the paddle's face
+        if (index == LEFT && ball.center.x < currentPaddleRect.x + currentPaddleRect.width) { continue; }
+        // Right paddle: same, mirrored
+        if (index == RIGHT && ball.center.x > currentPaddleRect.x) { continue; }
+        // No Collision, No problem.
        if (!CheckCollisionCircleRec(ball.center, ball.radius, currentPaddleRect)) { continue; }
 
         // Hits left paddle
@@ -21,7 +26,7 @@ void CollisionHandler::ResolveCollisions(Ball& ball, const std::array<Paddle, PA
             ball.center.x   = currentPaddle.GetPosition().x + currentPaddle.GetDimensions().x + ball.radius;
         }
         // Hits right paddle
-        else
+        else if (index == RIGHT)
         {
             ball.velocity.x = -std::abs(ball.velocity.x);
             ball.center.x   = currentPaddle.GetPosition().x - ball.radius;
