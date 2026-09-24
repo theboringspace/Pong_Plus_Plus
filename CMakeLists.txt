@@ -11,7 +11,8 @@ add_executable(PingPlusPlus
   src/main.cpp
   src/Ball.cpp
   src/Paddle.cpp
-  src/CollisionHandler.cpp)
+  src/CollisionHandler.cpp
+  src/World.cpp)
 
 target_include_directories(PingPlusPlus PRIVATE
   include)

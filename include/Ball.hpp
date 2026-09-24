@@ -1,23 +1,38 @@
 #pragma once
 
 #include <raylib.h>
-#include "Constants.hpp"
 
+/**
+ * STRUCT Ball
+ * --
+ * This struct's purpose is to be the ball in the classic game of Pong.
+ */
 struct Ball
 {
-    // MEMBERS
+    /**
+     * MEMBERS
+     */
+    static constexpr float BALL_SPEED{750.0f};
+
     Vector2 center;
     float   radius;
 
-    Vector2 velocity{ Vector2{-5, -5} };
+    Vector2 velocity{ Vector2{BALL_SPEED, BALL_SPEED} };
 
 
-    // FUNCTIONS
+    /**
+     * FUNCTIONS
+     */
+
+    // Constructor
     Ball(Vector2 c, float r);
 
+    // Object Update Function
     void Update(float deltaTime);
 
-    void AddToPosition(const Vector2& velocity_);
-
+    // Object Main Function
     void Draw();
+
+    // Helper Function
+    void AddToPosition(const Vector2& velocity_);
 };

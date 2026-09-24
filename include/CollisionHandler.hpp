@@ -1,17 +1,50 @@
+#pragma once
+
 #include <raylib.h>
 #include <array>
 
 #include "Paddle.hpp"
 #include "Ball.hpp"
 
+/**
+ * CLASS CollisionHandler
+ * --
+ * Handles collisions STRICTLY between a paddle and a ball in a game of Pong.
+ *
+ * This class does not inherently hold any ball or paddle objects, but it can
+ * point to already existing paddle and ball objects.
+ */
 class CollisionHandler
 {
 private:
-    std::array<Paddle*, 2> paddles;
+    /**
+     * MEMBERS
+     */
+    std::array<Paddle*, 2>* paddles;
     Ball* ball;
 public:
-    CollisionHandler(Paddle* paddle1, Paddle* paddle2, Ball* ball);
+    /**
+     * FUNCTIONS
+     */
 
-    void Update(float deltaTime);
+    /**
+     * CONSTRUCTOR CollisionHandler
+     * --
+     * A collision handler handles 2 paddles' and 1 ball's collision events.
+     */
+    CollisionHandler(std::array<Paddle*, 2>* paddles_, Ball* ball);
+
+    /**
+     * FUNCTION ResolveCollision
+     * --
+     * Resolves collision events.
+     */
+    void ResolveCollision();
+
+    /**
+     * FUNCTION Draw
+     * --
+     * Draws updates on-screen.
+     */
     void Draw();
 };

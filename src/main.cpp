@@ -1,49 +1,72 @@
+// Dependencies
 #include <raylib.h>
 
+// Own includes
 #include "Ball.hpp"
 #include "Paddle.hpp"
-#include "CollisionHandler.hpp"
+#include "World.hpp"
+#include "Constants.hpp"
 
+/**
+ * MAIN
+ */
 int main()
 {
-
-
-
-    // WINDOW INITIALIZATIONS
+    /**
+     * WINDOW INITIALIZATIONS
+     */
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pong++");
     SetTargetFPS(60);
     float deltaTime{};
 
-    // TESTING STUFF
+    /**
+     * TESTING DECLARATIONS
+     */
     const int PADDLE_WIDTH{20};
     const int PADDLE_HEIGHT{300};
 
 
     Ball ball(Vector2{WINDOW_WIDTH / 2.0, WINDOW_HEIGHT / 2.0}, 25);
-    Paddle paddle1(Vector2{WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT});
-    Paddle paddle2(Vector2{WINDOW_WIDTH - WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT});
+
+    Paddle paddle1(Vector2{WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT},
+        KEY_W, KEY_S);
+
+    Paddle paddle2(Vector2{WINDOW_WIDTH - WINDOW_WIDTH / 8.0, WINDOW_HEIGHT / 2.0}, Vector2{PADDLE_WIDTH, PADDLE_HEIGHT},
+        KEY_UP, KEY_DOWN);
 
 
-    CollisionHandler collisioner(&paddle1, &paddle2, &ball);
-    // END TESTING
+    World world(&paddle1, &paddle2, &ball);
+    /**
+     * END TESTING
+     */
 
-    // MAIN GAME LOOP
+    /**
+     * MAIN GAME LOOP
+     */
     while (!WindowShouldClose())
     {
-        // PROCESS
-        float deltaTime = GetFrameTime();
+        /**
+         * PROCESS
+         */
+        deltaTime = GetFrameTime();
 
-        collisioner.Update(deltaTime);
+        world.Update(deltaTime);
 
-        // DRAWING
+        /**
+         * DRAWING
+         */
         BeginDrawing();
         ClearBackground(BLACK);
 
         DrawLine(WINDOW_WIDTH / 2, 0, WINDOW_WIDTH / 2, WINDOW_HEIGHT, WHITE);
 
-        // TESTING STUFF
-        collisioner.Draw();
-        // END TESTING
+        /**
+         * TESTING STUFF
+         */
+        world.Draw();
+        /**
+         * END TESTING
+         */
 
         EndDrawing();
     }

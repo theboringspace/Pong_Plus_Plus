@@ -1,3 +1,5 @@
+#pragma once
+
 // WINDOW SIZE CONSTANTS
-const int WINDOW_WIDTH{1280};
-const int WINDOW_HEIGHT{720};
+constexpr int WINDOW_WIDTH{1920};
+constexpr int WINDOW_HEIGHT{1080};

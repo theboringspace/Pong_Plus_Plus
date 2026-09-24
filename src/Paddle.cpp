@@ -1,7 +1,10 @@
 #include "Paddle.hpp"
+#include "Constants.hpp"
 
-Paddle::Paddle(Vector2 position_, Vector2 dimensions_)
-:   position(position_), dimensions(dimensions_)
+#include <algorithm>
+
+Paddle::Paddle(Vector2 position_, Vector2 dimensions_, KeyboardKey up, KeyboardKey down)
+:   position(position_), dimensions(dimensions_), upKey(up), downKey(down)
 {
 }
 
@@ -16,18 +19,18 @@ Vector2 Paddle::GetDimensions()const
 }
 
 
-void Paddle::Update()
+void Paddle::Update(float deltaTime)
 {
     // INPUT HANDLING
-    if (IsKeyDown(KEY_UP))
+    if (IsKeyDown(upKey) && position.y >= 0)
     {
-        position.y -= 5.0f;
+        position.y = std::max(0.0f, position.y - PADDLE_SPEED * deltaTime);
     }
-    if (IsKeyDown(KEY_DOWN))
+    if (IsKeyDown(downKey) && position.y <= WINDOW_HEIGHT - dimensions.y)
     {
-        position.y += 5.0f;
+        position.y = std::min(position.y + PADDLE_SPEED * deltaTime, WINDOW_HEIGHT - dimensions.y);
     }
-}   
+}
 
 
 void Paddle::Draw()
