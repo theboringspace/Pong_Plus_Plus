@@ -11,7 +11,7 @@ enum GameState
     MENU,
     SINGLE_PLAYER,
     TWO_PLAYER,
-    SETTINGS,
+    QUIT,
     GAME_OVER
 };
 
@@ -24,7 +24,7 @@ inline constexpr int TEXT_SIZE{ 55 };
 
 inline Button singlePlayerButton(SINGLE_PLAYER_BUTTON_X, SINGLE_PLAYER_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT, "Single Player", TEXT_SIZE);
 inline Button twoPlayerButton(SINGLE_PLAYER_BUTTON_X, SINGLE_PLAYER_BUTTON_Y + BUTTON_SPACING * 1.5f, BUTTON_WIDTH, BUTTON_HEIGHT, "Two Player", TEXT_SIZE);
-inline Button settingsButton(SINGLE_PLAYER_BUTTON_X, SINGLE_PLAYER_BUTTON_Y + BUTTON_SPACING * 1.5f * 2.0f, BUTTON_WIDTH, BUTTON_HEIGHT, "Settings", TEXT_SIZE);
+inline Button quitButton(SINGLE_PLAYER_BUTTON_X, SINGLE_PLAYER_BUTTON_Y + BUTTON_SPACING * 1.5f * 2.0f, BUTTON_WIDTH, BUTTON_HEIGHT, "Quit", TEXT_SIZE);
 
 inline GameState state{MENU};
 

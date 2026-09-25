@@ -10,7 +10,7 @@ void MenuHandler::StartMenu(World& game)
     DrawText("PONG++", (WINDOW_WIDTH - MeasureText("PONG++", 300)) / 2, WINDOW_HEIGHT / 7.0f, 300, WHITE);
     singlePlayerButton.Draw();
     twoPlayerButton.Draw();
-    settingsButton.Draw();
+    quitButton.Draw();
 
     if (singlePlayerButton.isClicked())
     {
@@ -22,10 +22,9 @@ void MenuHandler::StartMenu(World& game)
         game.Reset();
         state = TWO_PLAYER;
     }
-    else if (settingsButton.isClicked())
+    else if (quitButton.isClicked())
     {
-        game.Reset();
-        // state = SETTINGS;
+        state = QUIT;
     }
 }
 /**

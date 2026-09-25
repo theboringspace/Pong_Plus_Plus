@@ -26,7 +26,7 @@ int main()
     /**
      * MAIN GAME LOOP
      */
-    while (!WindowShouldClose())
+    while (!WindowShouldClose() && MenuHandler::state != MenuHandler::QUIT)
     {
         switch(MenuHandler::state)
         {
@@ -63,10 +63,9 @@ int main()
 
             break;
         }
-        case MenuHandler::SETTINGS :
-            break;
 
         case MenuHandler::GAME_OVER :
+        {
             BeginDrawing();
             ClearBackground(BLACK);
             game.Draw();
@@ -86,6 +85,7 @@ int main()
                 MenuHandler::state = MenuHandler::MENU;
             }
             break;
+        }
         }
     }
 
