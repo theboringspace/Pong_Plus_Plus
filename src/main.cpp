@@ -29,16 +29,16 @@ int main()
     {
         switch(MenuHandler::state)
         {
-        case MenuHandler::GameState::MENU :
+        case MenuHandler::MENU :
             BeginDrawing();
             ClearBackground(BLACK);
             MenuHandler::StartMenu(game);
             EndDrawing();
             break;
-        case MenuHandler::GameState::SINGLE_PLAYER :
+        case MenuHandler::SINGLE_PLAYER :
 
             break;
-        case MenuHandler::GameState::TWO_PLAYER :
+        case MenuHandler::TWO_PLAYER :
         {
             const float deltaTime{ GetFrameTime() };
             // PROCESS
@@ -49,9 +49,35 @@ int main()
             ClearBackground(BLACK);
             game.Draw();
             EndDrawing();
+
+            if (game.IsOver())
+            {
+                MenuHandler::state = MenuHandler::GAME_OVER;
+            }
+
             break;
         }
-        case MenuHandler::GameState::SETTINGS :
+        case MenuHandler::SETTINGS :
+            break;
+
+        case MenuHandler::GAME_OVER :
+            BeginDrawing();
+            game.Draw();
+            if (game.GetWinner() == LEFT)
+            {
+                DrawText("PLAYER 1 WINS!", (WINDOW_WIDTH - MeasureText("PLAYER 1 WINS!", 150)) / 2, WINDOW_HEIGHT / 7.0f, 150, WHITE);
+            }
+            else
+            {
+                DrawText("PLAYER 2 WINS!", (WINDOW_WIDTH - MeasureText("PLAYER 2 WINS!", 150)) / 2, WINDOW_HEIGHT / 7.0f, 150, WHITE);
+            }
+            DrawText("Press Enter to Return to Menu...", (WINDOW_WIDTH - MeasureText("Press Enter to Return to Menu...", 50)) / 2, WINDOW_HEIGHT / 2.0f + 200, 50, WHITE);
+            EndDrawing();
+
+            if (IsKeyPressed(KEY_ENTER))
+            {
+                MenuHandler::state = MenuHandler::MENU;
+            }
             break;
         }
     }

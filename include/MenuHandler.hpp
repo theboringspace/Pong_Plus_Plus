@@ -11,7 +11,8 @@ enum GameState
     MENU,
     SINGLE_PLAYER,
     TWO_PLAYER,
-    SETTINGS
+    SETTINGS,
+    GAME_OVER
 };
 
 inline constexpr float BUTTON_WIDTH{ 450 };

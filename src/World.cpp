@@ -50,3 +50,13 @@ void World::Reset()
 {
     *this = World{};
 }
+
+bool World::IsOver()const
+{
+    return leftScore == WINNING_SCORE || rightScore == WINNING_SCORE;
+}
+
+Side World::GetWinner()const
+{
+    return (IsOver() && leftScore >= WINNING_SCORE) ? LEFT : RIGHT;
+}

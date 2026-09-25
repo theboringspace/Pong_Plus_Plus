@@ -14,7 +14,8 @@ void MenuHandler::StartMenu(World& game)
 
     if (singlePlayerButton.isClicked())
     {
-
+        game.Reset();
+        state = SINGLE_PLAYER;
     }
     else if (twoPlayerButton.isClicked())
     {
@@ -23,7 +24,8 @@ void MenuHandler::StartMenu(World& game)
     }
     else if (settingsButton.isClicked())
     {
-
+        game.Reset();
+        // state = SETTINGS;
     }
 }
 /**

@@ -22,6 +22,8 @@ private:
     Ball ball;
     std::array<Paddle, PADDLE_COUNT> paddles;
 
+    static constexpr int WINNING_SCORE{5};
+
     int leftScore{0};
     int rightScore{0};
 
@@ -43,4 +45,8 @@ public:
 
     // Put scores, ball, and paddles back to their starting state
     void Reset();
+
+    bool IsOver()const;
+
+    Side GetWinner()const;
 };
