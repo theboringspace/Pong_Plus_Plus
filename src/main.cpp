@@ -15,6 +15,9 @@ int main()
      * WINDOW INITIALIZATIONS
      */
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pong++");
+    ToggleFullscreen();
+    RenderTexture2D target{ LoadRenderTexture(WINDOW_WIDTH, WINDOW_HEIGHT) };
+    SetTextureFilter(target.texture, TEXTURE_FILTER_BILINEAR);
     SetTargetFPS(60);
     SetExitKey(KEY_NULL);
 
@@ -28,13 +31,16 @@ int main()
      */
     while (!WindowShouldClose() && MenuHandler::state != MenuHandler::QUIT)
     {
+        SetMouseScale((float)WINDOW_WIDTH / GetScreenWidth(), (float)WINDOW_HEIGHT / GetScreenHeight());
+
         switch(MenuHandler::state)
         {
         case MenuHandler::MENU :
-            BeginDrawing();
+            BeginTextureMode(target);
             ClearBackground(BLACK);
+
             MenuHandler::StartMenu(game);
-            EndDrawing();
+            EndTextureMode();
             break;
         case MenuHandler::SINGLE_PLAYER :
 
@@ -46,10 +52,11 @@ int main()
             game.Update(deltaTime);
 
             // DRAW
-            BeginDrawing();
+            BeginTextureMode(target);
             ClearBackground(BLACK);
+
             game.Draw();
-            EndDrawing();
+            EndTextureMode();
 
             if (IsKeyPressed(KEY_ESCAPE))
             {
@@ -66,7 +73,7 @@ int main()
 
         case MenuHandler::GAME_OVER :
         {
-            BeginDrawing();
+            BeginTextureMode(target);
             ClearBackground(BLACK);
             game.Draw();
             if (game.GetWinner() == LEFT)
@@ -78,7 +85,7 @@ int main()
                 DrawText("PLAYER 2 WINS!", (WINDOW_WIDTH - MeasureText("PLAYER 2 WINS!", 150)) / 2, WINDOW_HEIGHT / 7.0f, 150, WHITE);
             }
             DrawText("Press Enter to Return to Menu...", (WINDOW_WIDTH - MeasureText("Press Enter to Return to Menu...", 50)) / 2, WINDOW_HEIGHT / 2.0f + 200, 50, WHITE);
-            EndDrawing();
+            EndTextureMode();
 
             if (IsKeyPressed(KEY_ENTER))
             {
@@ -86,9 +93,20 @@ int main()
             }
             break;
         }
+        case MenuHandler::QUIT :
+            break;
         }
+
+        BeginDrawing();
+        ClearBackground(BLACK);
+        DrawTexturePro(target.texture,
+                       Rectangle{ 0, 0, (float)WINDOW_WIDTH, -(float)WINDOW_HEIGHT },
+                       Rectangle{ 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() },
+                       Vector2{ 0, 0 }, 0.0f, WHITE);
+        EndDrawing();
     }
 
+    UnloadRenderTexture(target);
     CloseWindow();
 
     return 0;
