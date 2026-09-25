@@ -40,4 +40,7 @@ public:
     void Draw()const;
 
     void Score();
+
+    // Put scores, ball, and paddles back to their starting state
+    void Reset();
 };

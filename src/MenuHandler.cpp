@@ -5,7 +5,7 @@
 /**
  * START MENU
  */
-void MenuHandler::StartMenu()
+void MenuHandler::StartMenu(World& game)
 {
     DrawText("PONG++", (WINDOW_WIDTH - MeasureText("PONG++", 300)) / 2, WINDOW_HEIGHT / 7.0f, 300, WHITE);
     singlePlayerButton.Draw();
@@ -18,6 +18,7 @@ void MenuHandler::StartMenu()
     }
     else if (twoPlayerButton.isClicked())
     {
+        game.Reset();
         state = TWO_PLAYER;
     }
     else if (settingsButton.isClicked())

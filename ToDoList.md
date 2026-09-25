@@ -6,7 +6,7 @@
 5. Win condition ofcourse 
 
 # Make the game more structured
-1. Game states
+1. x kinda Game states
 - Title, Playing, Paused, GameOver
 2. Allow to pause and restart with 'P' and 'R' respectively.
 3. Title screen, and player wins.

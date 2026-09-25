@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include "Button.hpp"
 #include "Constants.hpp"
+#include "World.hpp"
 
 namespace MenuHandler
 {
@@ -29,7 +30,7 @@ inline GameState state{MENU};
 /**
  * START MENU
  */
-void StartMenu();
+void StartMenu(World& game);
 /**
  * START MENU END
  */

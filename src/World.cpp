@@ -45,3 +45,8 @@ void World::Score()
         ++rightScore;
     }
 }
+
+void World::Reset()
+{
+    *this = World{};
+}

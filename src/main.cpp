@@ -4,7 +4,6 @@
 // Own includes
 #include "World.hpp"
 #include "Constants.hpp"
-#include "Button.hpp"
 #include "MenuHandler.hpp"
 
 /**
@@ -32,25 +31,26 @@ int main()
         {
         case MenuHandler::GameState::MENU :
             BeginDrawing();
-            MenuHandler::StartMenu();
+            ClearBackground(BLACK);
+            MenuHandler::StartMenu(game);
             EndDrawing();
             break;
         case MenuHandler::GameState::SINGLE_PLAYER :
+
             break;
         case MenuHandler::GameState::TWO_PLAYER :
-            while (true)
-            {
-                const float deltaTime{ GetFrameTime() };
-                // PROCESS
-                game.Update(deltaTime);
+        {
+            const float deltaTime{ GetFrameTime() };
+            // PROCESS
+            game.Update(deltaTime);
 
-                // DRAW
-                BeginDrawing();
-                ClearBackground(BLACK);
-                game.Draw();
-                EndDrawing();
-            }
+            // DRAW
+            BeginDrawing();
+            ClearBackground(BLACK);
+            game.Draw();
+            EndDrawing();
             break;
+        }
         case MenuHandler::GameState::SETTINGS :
             break;
         }
