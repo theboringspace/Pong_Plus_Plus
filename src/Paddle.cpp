@@ -18,9 +18,16 @@ Vector2 Paddle::GetDimensions()const
     return dimensions;
 }
 
+float Paddle::GetVelocityY()const
+{
+    return velocityY;
+}
+
 
 void Paddle::Update(float deltaTime)
 {
+    const float oldY{ position.y };
+
     // INPUT HANDLING
     if (IsKeyDown(upKey) && position.y >= 0)
     {
@@ -30,10 +37,15 @@ void Paddle::Update(float deltaTime)
     {
         position.y = std::min(position.y + PADDLE_SPEED * deltaTime, WINDOW_HEIGHT - dimensions.y);
     }
+
+    // Guard against a zero frame time (first frame)
+    velocityY = (deltaTime > 0.0f) ? (position.y - oldY) / deltaTime : 0.0f;
 }
 
 void Paddle::UpdateAI(float deltaTime, const Ball& ball)
 {
+    const float oldY{ position.y };
+
     // Slow movement
     if (position.y + dimensions.y / 2 > ball.center.y)
     {
@@ -49,6 +61,9 @@ void Paddle::UpdateAI(float deltaTime, const Ball& ball)
     {
         position.y = ball.center.y - dimensions.y / 2;
     }
+
+    // Teleports show up as huge speeds here, which means maximum spin
+    velocityY = (deltaTime > 0.0f) ? (position.y - oldY) / deltaTime : 0.0f;
 }
 
 void Paddle::Draw()const

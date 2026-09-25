@@ -22,6 +22,9 @@ private:
     Vector2 position;
     Vector2 dimensions{PADDLE_WIDTH, PADDLE_HEIGHT};
 
+    // How fast the paddle moved vertically last frame (used for spin)
+    float velocityY{0.0f};
+
     KeyboardKey upKey;
     KeyboardKey downKey;
 public:
@@ -45,6 +48,13 @@ public:
      * Width & height, respectively.
      */
     Vector2 GetDimensions()const;
+
+    /**
+     * FUNCTION GetVelocityY
+     * --
+     * Vertical speed from last frame. Positive is down.
+     */
+    float GetVelocityY()const;
 
     /**
      * FUNCTION Update

@@ -4,6 +4,9 @@
 
 void CollisionHandler::ResolveCollisions(Ball& ball, const std::array<Paddle, PADDLE_COUNT>& paddles)
 {
+    static constexpr float SPIN_FACTOR{0.5f};
+    static constexpr float MAX_SPIN_SPEED{1400.0f};
+
     Rectangle currentPaddleRect{};
 
     for (size_t index{0}; index < paddles.size(); ++index)
@@ -30,6 +33,25 @@ void CollisionHandler::ResolveCollisions(Ball& ball, const std::array<Paddle, PA
         {
             ball.velocity.x = -std::abs(ball.velocity.x);
             ball.center.x   = currentPaddle.GetPosition().x - ball.radius;
+        }
+
+        // Spin: paddle's movement carries into the ball
+        ball.velocity.y += currentPaddle.GetVelocityY() * SPIN_FACTOR;
+
+        if (ball.velocity.y > MAX_SPIN_SPEED)
+        {
+            ball.velocity.y = MAX_SPIN_SPEED;
+        }
+        else if (ball.velocity.y < -MAX_SPIN_SPEED)
+        {
+            ball.velocity.y = -MAX_SPIN_SPEED;
+        }
+
+        ball.velocity.x *= 1.10f;
+
+        if (ball.velocity.x >= 2000.0f)
+        {
+            ball.velocity.x = 2000.0f;
         }
     }
 }

@@ -21,3 +21,9 @@ target_include_directories(PingPlusPlus PRIVATE
 
 target_link_libraries(PingPlusPlus PRIVATE raylib)
 target_compile_options(PingPlusPlus PRIVATE -Wall -Wextra)
+
+# Copy assets next to the executable on every build (even when no code changed)
+add_custom_target(copy_assets ALL
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${CMAKE_SOURCE_DIR}/assets ${CMAKE_BINARY_DIR}/assets)
+add_dependencies(PingPlusPlus copy_assets)

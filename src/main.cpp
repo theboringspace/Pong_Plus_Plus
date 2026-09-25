@@ -1,5 +1,6 @@
 // Dependencies
 #include <raylib.h>
+#include <array>
 
 // Own includes
 #include "World.hpp"
@@ -22,6 +23,23 @@ int main()
     SetExitKey(KEY_NULL);
 
     /**
+     * AUDIO INITIALIZATIONS
+     */
+    InitAudioDevice();
+    // Playlist: each song plays once, then the next one starts, looping back to the first.
+    // Loaded from next to the .exe, so it works no matter where the game is launched from
+    std::array<Music, 2> songs{ LoadMusicStream(TextFormat("%sassets/song1.mp3", GetApplicationDirectory())),
+                                LoadMusicStream(TextFormat("%sassets/song2.mp3", GetApplicationDirectory())) };
+    size_t currentSong{0};
+
+    for (Music& song : songs)
+    {
+        song.looping = false;
+        SetMusicVolume(song, 0.5f);
+    }
+    PlayMusicStream(songs[currentSong]);
+
+    /**
      *  VARIABLE INITIALIZATIONS
      */
     World game;
@@ -31,6 +49,15 @@ int main()
      */
     while (!WindowShouldClose() && MenuHandler::state != MenuHandler::QUIT)
     {
+        // Must run every frame, in every state, or the music stutters
+        UpdateMusicStream(songs[currentSong]);
+
+        // Song finished (or failed to load): move on to the next one
+        if (!IsMusicValid(songs[currentSong]) || !IsMusicStreamPlaying(songs[currentSong]))
+        {
+            currentSong = (currentSong + 1) % songs.size();
+            PlayMusicStream(songs[currentSong]);
+        }
         SetMouseScale((float)WINDOW_WIDTH / GetScreenWidth(), (float)WINDOW_HEIGHT / GetScreenHeight());
 
         switch(MenuHandler::state)
@@ -105,6 +132,11 @@ int main()
         EndDrawing();
     }
 
+    for (Music& song : songs)
+    {
+        UnloadMusicStream(song);
+    }
+    CloseAudioDevice();
     UnloadRenderTexture(target);
     CloseWindow();
 
