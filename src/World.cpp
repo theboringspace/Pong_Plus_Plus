@@ -18,7 +18,6 @@ void World::Update(float deltaTime)
     CollisionHandler::ResolveCollisions(ball, paddles);
 
 }
-
 void World::Draw()const
 {
     paddles[LEFT].Draw();

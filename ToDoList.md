@@ -1,6 +1,6 @@
 # Actually Make a Game
-1. Ball reaching either left or right edges should score instead of bouncing + new round.
-2. Display Scores
+1. x Ball reaching either left or right edges should score instead of bouncing + new round.
+2. x Display Scores
 3. Random Start Direction for Ball
 4. Bounce angle of the ball should have some variance, not just switch x and y
 5. Win condition ofcourse 
@@ -12,7 +12,7 @@
 3. Title screen, and player wins.
 
 # Add style to the game
-1. Sound Effects
+1. Sound Effects32@
 2. I don't like the raylib font btw
 3. maybe visual effects (idk how)
 
