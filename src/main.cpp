@@ -15,7 +15,8 @@ int main()
      * WINDOW INITIALIZATIONS
      */
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pong++");
-    SetTargetFPS(120);
+    SetTargetFPS(60);
+    SetExitKey(KEY_NULL);
 
     /**
      *  VARIABLE INITIALIZATIONS
@@ -50,6 +51,11 @@ int main()
             game.Draw();
             EndDrawing();
 
+            if (IsKeyPressed(KEY_ESCAPE))
+            {
+                MenuHandler::state = MenuHandler::MENU;
+            }
+
             if (game.IsOver())
             {
                 MenuHandler::state = MenuHandler::GAME_OVER;
@@ -62,6 +68,7 @@ int main()
 
         case MenuHandler::GAME_OVER :
             BeginDrawing();
+            ClearBackground(BLACK);
             game.Draw();
             if (game.GetWinner() == LEFT)
             {
