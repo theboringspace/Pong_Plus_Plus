@@ -15,11 +15,13 @@ void MenuHandler::StartMenu(World& game)
     if (singlePlayerButton.isClicked())
     {
         game.Reset();
+        game.SetSinglePlayer(true);
         state = SINGLE_PLAYER;
     }
     else if (twoPlayerButton.isClicked())
     {
         game.Reset();
+        game.SetSinglePlayer(false);
         state = TWO_PLAYER;
     }
     else if (quitButton.isClicked())

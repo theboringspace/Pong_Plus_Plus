@@ -11,8 +11,11 @@ World::World()
 
 void World::Update(float deltaTime)
 {
-    for (Paddle& paddle : paddles)
-        { paddle.Update(deltaTime); }
+    paddles[LEFT].Update(deltaTime);
+    if (singlePlayer)
+        { paddles[RIGHT].UpdateAI(deltaTime, ball); }
+    else
+        { paddles[RIGHT].Update(deltaTime); }
     Score();
     ball.Update(deltaTime);
     CollisionHandler::ResolveCollisions(ball, paddles);
@@ -59,4 +62,14 @@ bool World::IsOver()const
 Side World::GetWinner()const
 {
     return (IsOver() && leftScore >= WINNING_SCORE) ? LEFT : RIGHT;
+}
+
+void World::SetSinglePlayer(bool singlePlayer_)
+{
+    singlePlayer = singlePlayer_;
+}
+
+bool World::IsSinglePlayer()const
+{
+    return singlePlayer;
 }

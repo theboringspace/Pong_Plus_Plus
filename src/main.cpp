@@ -42,9 +42,8 @@ int main()
             MenuHandler::StartMenu(game);
             EndTextureMode();
             break;
+        // Both modes share the match; World handles who controls the right paddle
         case MenuHandler::SINGLE_PLAYER :
-
-            break;
         case MenuHandler::TWO_PLAYER :
         {
             const float deltaTime{ GetFrameTime() };

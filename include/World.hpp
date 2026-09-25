@@ -27,6 +27,9 @@ private:
     int leftScore{0};
     int rightScore{0};
 
+    // Right paddle is controlled by the computer
+    bool singlePlayer{false};
+
 public:
     /**
      * CONSTRUCTOR World
@@ -49,4 +52,8 @@ public:
     bool IsOver()const;
 
     Side GetWinner()const;
+
+    // Set AFTER Reset(), since Reset() puts this back to false
+    void SetSinglePlayer(bool singlePlayer_);
+    bool IsSinglePlayer()const;
 };

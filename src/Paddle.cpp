@@ -32,6 +32,11 @@ void Paddle::Update(float deltaTime)
     }
 }
 
+void Paddle::UpdateAI(float /*deltaTime*/, const Ball& /*ball*/)
+{
+    // TODO: lazy tracking + last-second teleport
+}
+
 void Paddle::Draw()const
 {
     DrawRectangle(position.x, position.y, dimensions.x, dimensions.y, WHITE);

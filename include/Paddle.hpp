@@ -2,6 +2,8 @@
 
 #include <raylib.h>
 
+#include "Ball.hpp"
+
 /**
  * CLASS Paddle
  * --
@@ -50,6 +52,13 @@ public:
      * Updates paddle members depending on events.
      */
     void Update(float deltaTime);
+
+    /**
+     * FUNCTION UpdateAI
+     * --
+     * Computer-controlled movement. Watches the ball instead of the keyboard.
+     */
+    void UpdateAI(float deltaTime, const Ball& ball);
 
     /**
      * FUNCTION Draw
