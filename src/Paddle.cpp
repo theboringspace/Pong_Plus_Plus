@@ -32,9 +32,23 @@ void Paddle::Update(float deltaTime)
     }
 }
 
-void Paddle::UpdateAI(float /*deltaTime*/, const Ball& /*ball*/)
+void Paddle::UpdateAI(float deltaTime, const Ball& ball)
 {
-    // TODO: lazy tracking + last-second teleport
+    // Slow movement
+    if (position.y + dimensions.y / 2 > ball.center.y)
+    {
+        position.y = std::max(0.0f, position.y - PADDLE_SPEED * deltaTime / 2);
+    }
+    else if (position.y + dimensions.y / 2 < ball.center.y)
+    {
+        position.y = std::min(position.y + PADDLE_SPEED * deltaTime / 2, WINDOW_HEIGHT - dimensions.y);
+    }
+
+    // Teleport
+    if (ball.velocity.x > 0 && position.x - ball.center.x < 150)
+    {
+        position.y = ball.center.y - dimensions.y / 2;
+    }
 }
 
 void Paddle::Draw()const
